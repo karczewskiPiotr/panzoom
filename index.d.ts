@@ -1,4 +1,4 @@
-declare module "panzoom" {
+declare module "@karczewski_piotr/panzoom" {
   interface Bounds {
     left: number;
     top: number;
