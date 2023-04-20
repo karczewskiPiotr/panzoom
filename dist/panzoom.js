@@ -53,7 +53,16 @@ function createPanZoom(domElement, options) {
   var isDirty = false;
   var transform = new Transform();
 
-  if (panController.initTransform) {
+  // Hack to start the panzoom at transform
+  if (options.initTransform) {
+    storedCTMResult.x = options.initTransform.x;
+    storedCTMResult.x = options.initTransform.y;
+    transform.x = options.initTransform.x;
+    transform.y = options.initTransform.y;
+    transform.scale = options.initTransform.scale;
+  }
+
+  if (panController.initTransform || options.initTransform) {
     panController.initTransform(transform);
   }
 
@@ -182,8 +191,15 @@ function createPanZoom(domElement, options) {
     initialY != transform.y ||
     initialZoom != transform.scale
   ) {
-    if (options.initializeExact) zoomExact(initialX, initialY, initialZoom);
-    else zoomAbs(initialX, initialY, initialZoom);
+    let zoom;
+
+    if (options.initializeSmooth) {
+      zoom = options.initializeExact ? smoothZoomExact : smoothZoomAbs;
+    } else {
+      zoom = options.initializeExact ? zoomExact : zoomAbs;
+    }
+
+    zoom(initialX, initialY, initialZoom);
   }
 
   return api;

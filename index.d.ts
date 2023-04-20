@@ -40,6 +40,12 @@ declare module "@karczewski_piotr/panzoom" {
     onTouch?: (e: TouchEvent) => void;
     onDoubleClick?: (e: Event) => void;
     initializeExact?: boolean;
+    initializeSmooth?: boolean;
+    initTransform?: {
+      x: number;
+      y: number;
+      scale: number;
+    };
 
     /**
      * Called after user "clicks" with a single tap or mouse button.
