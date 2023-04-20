@@ -61,7 +61,7 @@ function createPanZoom(domElement, options) {
     transform.scale = options.initTransform.scale;
   }
 
-  if (panController.initTransform || options.initTransform) {
+  if (panController.initTransform) {
     panController.initTransform(transform);
   }
 
