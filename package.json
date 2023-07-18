@@ -1,6 +1,6 @@
 {
   "name": "@karczewski_piotr/panzoom",
-  "version": "9.5.1",
+  "version": "9.5.2",
   "description": "Extensible, mobile friendly pan and zoom framework (supports DOM and SVG).",
   "main": "index.js",
   "scripts": {
