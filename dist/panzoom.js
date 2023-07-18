@@ -524,6 +524,7 @@ function createPanZoom(domElement, options) {
       step: function (v) {
         zoomExact(v.x, v.y, v.scale);
       },
+      done: triggerZoomEnd,
     });
   }
 
@@ -1006,6 +1007,7 @@ function createPanZoom(domElement, options) {
       step: function (v) {
         zoomAbs(clientX, clientY, v.scale);
       },
+      done: triggerZoomEnd,
     });
   }
 
