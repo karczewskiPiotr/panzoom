@@ -520,6 +520,7 @@ function createPanZoom(domElement, options) {
     smoothScroll.cancel();
     cancelZoomAnimation();
 
+    triggerEvent("zoomstart");
     zoomToAnimation = animate(from, to, {
       step: function (v) {
         zoomExact(v.x, v.y, v.scale);
@@ -987,6 +988,7 @@ function createPanZoom(domElement, options) {
     smoothScroll.cancel();
     cancelZoomAnimation();
 
+    triggerEvent("zoomstart");
     zoomToAnimation = animate(from, to, {
       step: function (v) {
         zoomAbs(clientX, clientY, v.scale);
@@ -1003,6 +1005,7 @@ function createPanZoom(domElement, options) {
     smoothScroll.cancel();
     cancelZoomAnimation();
 
+    triggerEvent("zoomstart");
     zoomToAnimation = animate(from, to, {
       step: function (v) {
         zoomAbs(clientX, clientY, v.scale);
