@@ -753,7 +753,9 @@ function createPanZoom(domElement, options) {
   }
 
   function handleTouchMove(e) {
+    triggerEvent("touchstart");
     if (e.touches.length === 1) {
+      triggerEvent("singletouch");
       e.stopPropagation();
       var touch = e.touches[0];
 
@@ -770,6 +772,7 @@ function createPanZoom(domElement, options) {
       mouseY = point.y;
       internalMoveBy(dx, dy);
     } else if (e.touches.length === 2) {
+      triggerEvent("multitouch");
       // it's a zoom, let's find direction
       multiTouch = true;
       var t1 = e.touches[0];
@@ -850,6 +853,7 @@ function createPanZoom(domElement, options) {
 
       lastTouchEndTime = now;
 
+      triggerEvent("touchend");
       triggerPanEnd();
       releaseTouches();
     }
